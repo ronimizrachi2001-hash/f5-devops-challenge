@@ -72,7 +72,15 @@ Fill this in as you go. Bullet points are fine — be specific, not long.
 
 Optional. Answer only the ones you got to — number them, skip the rest.
 
->
+> Bonus 1- Minimal Base Image:
+    What was changed: Migrated the proxy 'Dockerfile' from a heavy Ubuntu 24.04 base image to the lightweight 'nginx:alpine' image.
+    Image Size Comparison:
+        Before (Ubuntu-based): 170MB
+        After (Alpine-based): 45MB
+
+> Bonus 2- Non-Root User Execution:
+    What was changed: Explicitly adjusted the ownership of Nginx working directories (/var/cache/nginx, /var/log/nginx, /etc/nginx, /run) to the built-in non-root 'nginx' user via 'chown'. Added 'USER nginx' to the 'Dockerfile'.
+    Why it matters: Adheres to production security best practices by preventing the Nginx master and worker processes from running with elevated 'root' privileges, mitigating potential container breakout risks.
 
 ---
 
