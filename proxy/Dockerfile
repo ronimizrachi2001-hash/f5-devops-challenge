@@ -1,11 +1,12 @@
-# Proxy image inherited from the previous team.
+# Optimized proxy image using a minimal Alpine base
+FROM nginx:alpine
 
-FROM ubuntu:24.04
-
+# Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN apt-get update && \
-    apt-get install -y nginx curl htop vim git
+RUN chown -R nginx:nginx /var/cache/nginx /var/log/nginx /etc/nginx /run
+
+USER nginx
 
 EXPOSE 80
 

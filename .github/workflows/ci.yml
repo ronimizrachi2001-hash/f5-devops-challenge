@@ -16,5 +16,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Make script executable
+        run: chmod +x ./scripts/run-tests.sh
+
       - name: Execute test suite
         run: ./scripts/run-tests.sh
